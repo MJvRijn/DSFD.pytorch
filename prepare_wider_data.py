@@ -26,7 +26,12 @@ def parse_wider_file(root, file):
             line = line.split(' ')
             count -= 1
             loc = [int(line[0]), int(line[1]), int(line[2]), int(line[3])]
-            face_loc += [loc]
+
+            # Remove 0-size faces
+            if loc[2] >= 1 and loc[3] >= 1:
+              face_loc += [loc]
+            else:
+              face_count[-1] -= 1
         if flag:
             face_count += [int(line)]
             flag = False
