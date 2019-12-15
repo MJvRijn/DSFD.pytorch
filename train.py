@@ -197,7 +197,7 @@ def train():
             iteration += 1
 
         val(epoch, net, dsfd_net, criterion)
-        if iteration == cfg.MAX_STEPS:
+        if iteration >= cfg.MAX_STEPS:
             break
 
 

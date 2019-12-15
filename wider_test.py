@@ -19,9 +19,9 @@ import numpy as np
 from PIL import Image
 import scipy.io as sio
 
-from .data.config import cfg
-from .models.factory import build_net
-from .utils.augmentations import to_chw_bgr
+from data.config import cfg
+from models.factory import build_net
+from utils.augmentations import to_chw_bgr
 
 
 parser = argparse.ArgumentParser(description='dsfd evaluatuon wider')
@@ -195,12 +195,12 @@ if __name__ == '__main__':
 
     for index, event in enumerate(event_list):
         filelist = file_list[index][0]
-        path = os.path.join(save_path, event[0][0].encode('utf-8'))
+        path = os.path.join(save_path, event[0][0])
         if not os.path.exists(path):
             os.makedirs(path)
 
         for num, file in enumerate(filelist):
-            im_name = file[0][0].encode('utf-8')
+            im_name = file[0][0]
             in_file = os.path.join(imgs_path, event[0][0], im_name[:] + '.jpg')
             #img = cv2.imread(in_file)
             img = Image.open(in_file)
@@ -226,12 +226,10 @@ if __name__ == '__main__':
             t2 = time.time()
             print('Detect %04d th image costs %.4f' % (counter, t2 - t1))
 
-            fout = open(osp.join(save_path, event[0][
-                        0].encode('utf-8'), im_name + '.txt'), 'w')
-            fout.write('{:s}\n'.format(event[0][0].encode(
-                'utf-8') + '/' + im_name + '.jpg'))
+            fout = open(osp.join(save_path, event[0][0], im_name + '.txt'), 'w')
+            fout.write('{:s}\n'.format(event[0][0] + '/' + im_name + '.jpg'))
             fout.write('{:d}\n'.format(dets.shape[0]))
-            for i in xrange(dets.shape[0]):
+            for i in range(dets.shape[0]):
                 xmin = dets[i][0]
                 ymin = dets[i][1]
                 xmax = dets[i][2]

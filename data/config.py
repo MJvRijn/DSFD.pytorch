@@ -35,8 +35,8 @@ _C.anchor_sampling = True
 _C.filter_min_face = True
 
 # train config
-_C.LR_STEPS = (20000,25000)
-_C.MAX_STEPS = 30000
+_C.LR_STEPS = (10000,12500)
+_C.MAX_STEPS = 15000
 _C.EPOCHES = 100
 
 # anchor config
