@@ -194,11 +194,12 @@ def train():
                 file = 'dsfd_' + repr(iteration) + '.pth'
                 torch.save(dsfd_net.state_dict(),
                            os.path.join(save_folder, file))
-            iteration += 1
 
-        val(epoch, net, dsfd_net, criterion)
-        if iteration >= cfg.MAX_STEPS:
-            break
+                if iteration >= cfg.MAX_STEPS:
+                    return
+            
+            iteration += 1
+        # val(epoch, net, dsfd_net, criterion)
 
 
 def val(epoch, net, dsfd_net, criterion):
