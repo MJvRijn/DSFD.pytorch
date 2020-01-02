@@ -127,7 +127,7 @@ def multi_scale_test(net, image, max_im_shrink):
 def bbox_vote(det):
     order = det[:, 4].ravel().argsort()[::-1]
     det = det[order, :]
-    dets = np.array((0,0))
+    dets = np.zeros((0,0))
     while det.shape[0] > 0:
         # IOU
         area = (det[:, 2] - det[:, 0] + 1) * (det[:, 3] - det[:, 1] + 1)
