@@ -60,5 +60,27 @@ class DetectionLoss(nn.Module):
 
     return losses.mean()
 
+# from PIL import Image
+# from torchvision import transforms
+# from matplotlib import pyplot as plt
+# import matplotlib.patches as patches
+# # position = torch.Tensor([0.28, 0.50, 0.34, 0.58])
+# # fig,ax = plt.subplots(1)
+# # ax.imshow((face[0].cpu() + torch.Tensor(cfg.img_mean)).permute(1,2,0))
+# # rect = patches.Rectangle((position[0]*640,position[1]*640),(position[2]-position[0])*640,(position[3]-position[1])*640,linewidth=1,edgecolor='r',facecolor='none')
+# # ax.add_patch(rect)
+# # plt.show()
 
+# d = DetectionLoss().cuda()
+# i = Image.open('/home/matthew/proj/data/WIDERFACE/WIDER_test/images/13--Interview/13_Interview_Interview_2_People_Visible_13_24.jpg')
+
+# transform = transforms.ToTensor()
+
+# i = transform(i).unsqueeze(0)
+# i -= torch.Tensor(cfg.img_mean)
+# i = i.cuda()
+
+# p = torch.Tensor([[0.25, 0.5, 0.35, 0.58]])
+# l = d(i, p)
+# print(l)
 
